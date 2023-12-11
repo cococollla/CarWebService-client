@@ -5,23 +5,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Machine List</title>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="../js/Auth.js"></script>
 </head>
 
 <body>
     <div>
-        <form action="/api/Account/Login" method="get" id="AuthForm">
+        <form id="AuthForm">
             <div>
                 <div>
-                    <label for="login">Login</label><br />
-                    <input id="login" name="login" type="text" />
+                    <label for="Email">Email</label><br />
+                    <input id="Email" name="Email" type="text" />
                 </div>
                 <div>
-                    <label for="password">Password</label><br />
-                    <input id="password" name="password" type="password" />
+                    <label for="Password">Password</label><br />
+                    <input id="Password" name="Password" type="password" />
                 </div>
                 <div>
-                    <button type="submit" id="submitlogin">Log in</button>
+                    <button type="button" id="submitlogin" onclick="authenticate()">Log in</button>
                     <a href="/app/Views/Signup.html">Registration</a>
                 </div>
             </div>
