@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Machine List</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+
+<body>
+    <h2>Sign in</h2>
+    <div>
+        <form action="https://localhost:7227/api/Account/Signup" method="post" id="SignupForm">
+            <div>
+                <div>
+                    <label for="name">Name</label><br />
+                    <input id="userName" name="name" type="text" />
+                </div>
+                <div>
+                    <label for="email">Email</label><br />
+                    <input id="email" name="email" type="text" />
+                </div>
+                <div>
+                    <label for="password">Password</label><br />
+                    <input id="password" name="password" type="password" />
+                </div>
+                <div>
+                    <label for="roleName">Role</label><br />
+                    <input id="role" name="roleName" type="text" />
+                </div>
+                <div>
+                    <button type="submit">Sign in</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
