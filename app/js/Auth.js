@@ -15,18 +15,16 @@ function authenticate() {
         body: JSON.stringify(credentials)
     })
     .then(response => {
-        if (!response.ok) {
+        if (response.status === 400) {
             throw new Error('Authentication failed');
         }
         return response.json();
     })
     .then(data => {
-        var accessToken = data.accessToken;
-        var refreshToken = data.refreshToken;
-        var role = data.role;
-        console.log('Access Token:', accessToken);
-        console.log('Refresh Token:', refreshToken);
-        console.log('Role:', role);
+        document.cookie = `role=${data.value.role}` + '; path=/';
+        document.cookie = `accessToken=${data.value.accessToken}` + '; path=/';
+
+        return window.location.href = window.location.origin + '/app/Views/Cars.html';
     })
     .catch(error => {
         console.error('Authentication error:', error);
