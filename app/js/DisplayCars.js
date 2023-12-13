@@ -1,11 +1,16 @@
 $(document).ready(function () {
+    let accessToken = localStorage.getItem('accessToken')
     $.ajax({
         url: 'https://localhost:7227/api/Car/GetCars',
         type: 'GET',
         dataType: 'json',
+        headers: {
+            Authorization: `Bearer ${accessToken}`          
+        },
         success: function (data) {
             displayMachineList(data);
         },
+
         error: function (error) {
             console.error('Error fetching machine data:', error);
         }

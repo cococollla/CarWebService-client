@@ -21,6 +21,7 @@ function authenticate() {
         return response.json();
     })
     .then(data => {
+        localStorage.setItem('accessToken', data.value.accessToken);
         document.cookie = `role=${data.value.role}` + '; path=/';
         document.cookie = `accessToken=${data.value.accessToken}` + '; path=/';
 
