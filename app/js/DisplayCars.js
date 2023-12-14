@@ -13,12 +13,17 @@ $(document).ready(function () {
         success: function (data) {
             displayMachineList(data);
         },
-
-        error: function (error) {
+        error: function (xhr, status, error) {
+            const isRefreshTokenExpired = xhr.getResponseHeader("IS-REFRESHTOKEN-EXPIRED") === "true";
+    
+            if (isRefreshTokenExpired) {
+                window.location.href = window.location.origin + "/app/Views/Auth.html";
+                return;
+            }
+    
             console.error('Error fetching machine data:', error);
         }
     });
-
     function displayMachineList(machineList) {
         $('#machineTable tbody').empty();
 

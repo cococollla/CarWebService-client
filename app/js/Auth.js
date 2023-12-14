@@ -16,7 +16,7 @@ function authenticate() {
         body: JSON.stringify(credentials),
     })
         .then((response) => {
-            if (response.status === 400) {
+            if (response.status === 404) {
                 throw new Error("Authentication failed");
             }
             return response.json();
