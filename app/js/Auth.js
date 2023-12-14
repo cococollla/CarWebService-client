@@ -17,7 +17,7 @@ function authenticate() {
     })
         .then((response) => {
             if (response.status === 404) {
-                throw new Error("Authentication failed");
+                alert("Authentication failed");
             }
             return response.json();
         })
