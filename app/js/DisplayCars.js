@@ -4,8 +4,11 @@ $(document).ready(function () {
         url: 'https://localhost:7227/api/Car/GetCars',
         type: 'GET',
         dataType: 'json',
+        xhrFields: {
+            withCredentials: true
+        },
         headers: {
-            Authorization: `Bearer ${accessToken}`          
+            Authorization: `Bearer ${accessToken}`
         },
         success: function (data) {
             displayMachineList(data);

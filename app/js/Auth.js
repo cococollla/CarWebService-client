@@ -7,27 +7,29 @@ function authenticate() {
         Password: password
     };
 
-    fetch('https://localhost:7227/api/Account/Login', {
-        method: 'POST',
+    fetch("https://localhost:7227/api/Account/Login", {
+        method: "POST",
+        credentials: "include",
         headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json",
         },
-        body: JSON.stringify(credentials)
+        body: JSON.stringify(credentials),
     })
-    .then(response => {
-        if (response.status === 400) {
-            throw new Error('Authentication failed');
-        }
-        return response.json();
-    })
-    .then(data => {
-        localStorage.setItem('accessToken', data.value.accessToken);
-        document.cookie = `role=${data.value.role}` + '; path=/';
-        document.cookie = `accessToken=${data.value.accessToken}` + '; path=/';
+        .then((response) => {
+            if (response.status === 400) {
+                throw new Error("Authentication failed");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            localStorage.setItem("accessToken", data.value.accessToken);
+            document.cookie = `role=${data.value.role}` + "; path=/";
+            document.cookie = `accessToken=${data.value.accessToken}` + "; path=/";
 
-        return window.location.href = window.location.origin + '/app/Views/Cars.html';
-    })
-    .catch(error => {
-        console.error('Authentication error:', error);
-    });
+            return (window.location.href =
+                window.location.origin + "/app/Views/Cars.html");
+        })
+        .catch((error) => {
+            console.error("Authentication error:", error);
+        });
 }
