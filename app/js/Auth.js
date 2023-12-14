@@ -22,10 +22,9 @@ function authenticate() {
             return response.json();
         })
         .then((data) => {
+            localStorage.setItem("role", data.value.role);
             localStorage.setItem("accessToken", data.value.accessToken);
-            document.cookie = `role=${data.value.role}` + "; path=/";
-            document.cookie = `accessToken=${data.value.accessToken}` + "; path=/";
-
+            
             return (window.location.href =
                 window.location.origin + "/app/Views/Cars.html");
         })
