@@ -9,7 +9,7 @@
 
 <body>
     <div class="container">
-        <h2>Sign in</h2>
+        <h2>Sign up</h2>
         <form action="https://localhost:7227/api/Account/Signup" method="post" id="SignupForm">
             <div>
                 <div>
@@ -25,15 +25,34 @@
                     <input id="password" name="password" type="password" />
                 </div>
                 <div>
-                    <label for="roleName">Role</label><br />
-                    <input id="role" name="roleName" type="text" />
-                </div>
-                <div>
-                    <button type="submit">Sign in</button>
+                    <button type="submit">Sign up</button>
                 </div>
             </div>
         </form>
     </div>
 </body>
+
+<script>
+    const signup = document.querySelector('#SignupForm');
+    signup.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        fetch(signup.action, {
+            method: signup.method,
+            body: new FormData(signup),
+        })
+            .then(response => {
+                if (response.status === 200) {
+                    window.location.href = '/app/Views/Auth.html';
+                } else {
+                    console.error('Registration failed');
+                    alert('Registration failed')
+                }
+            })
+            .catch(error => {
+                console.error('Registration error', error);
+            });
+    });
+</script>
 
 </html>

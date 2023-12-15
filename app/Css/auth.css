@@ -42,9 +42,9 @@ button {
     font-size: 13px;
 }
 
-    button:hover {
-        background-color: #2980b9;
-    }
+button:hover {
+    background-color: #2980b9;
+}
 
 #submitLogin {
     margin-top: 10px;
@@ -62,7 +62,7 @@ button {
     cursor: pointer;
 }
 
-    .button-link:hover {
-        background-color: #3498db;
-        color: #fff;
-    }
+.button-link:hover {
+    background-color: #3498db;
+    color: #fff;
+}

@@ -38,8 +38,3 @@ body {
 .content-table tbody tr:last-of-type {
     border-bottom: 2px solid #3498db;
 }
-
-.content-table tbody tr.active-row {
-    font-weight: bold;
-    color: #3498db;
-}
