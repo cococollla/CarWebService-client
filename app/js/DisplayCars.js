@@ -68,7 +68,7 @@ function displayCarList(machineList) {
             '<td>' + machine.colorName + '</td>' +
             '<td>' + machine.yearRelese + '</td>' +
             '<td>' + machine.price + '</td>' +
-            '<td>' + machine.shorDescription + '</td>' +
+            '<td>' + machine.shortDescription + '</td>' +
             '</tr>';
         $('#machineTable tbody').append(row);
     });
