@@ -27,7 +27,7 @@ function displayCarsApiRequest() {
                 window.location.href = window.location.origin + "/app/Views/Auth.html";
                 return;
             } else if (isTokenExpired) {
-                performSilentTokenRefresh(role, displayCarsApiRequest);
+                getNewAccessToken(role, displayCarsApiRequest);
             } else {
                 console.error('Error fetching machine data:', error);
             }
@@ -35,7 +35,7 @@ function displayCarsApiRequest() {
     });
 }
 
-function performSilentTokenRefresh(role, callback) {
+function getNewAccessToken(role, callback) {
     $.ajax({
         url: 'https://localhost:7227/api/Account/RefreshToken',
         type: 'GET',
