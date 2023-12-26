@@ -5,6 +5,7 @@ $(document).ready(function () {
 function displayCarsApiRequest() {
     let accessToken = localStorage.getItem('accessToken');
     let role = localStorage.getItem('role');
+    let userId = localStorage.getItem('userId');
     $.ajax({
         url: 'https://localhost:7227/api/Car/GetCars',
         type: 'GET',
@@ -27,7 +28,7 @@ function displayCarsApiRequest() {
                 window.location.href = window.location.origin + "/app/Views/Auth.html";
                 return;
             } else if (isTokenExpired) {
-                getNewAccessToken(role, displayCarsApiRequest);
+                getNewAccessToken(userId, displayCarsApiRequest);
             } else {
                 console.error('Error fetching machine data:', error);
             }
@@ -35,13 +36,16 @@ function displayCarsApiRequest() {
     });
 }
 
-function getNewAccessToken(role, callback) {
+function getNewAccessToken(userId, callback) {
     $.ajax({
         url: 'https://localhost:7227/api/Account/RefreshToken',
         type: 'GET',
         dataType: 'json',
+        xhrFields: {
+            withCredentials: true
+        },
         headers: {
-            'Role': role
+            'userId': userId
         },
         success: function (data) {
             accessToken = data.value;
