@@ -25,12 +25,12 @@ function displayCarsApiRequest() {
             const isRefreshTokenExpired = xhr.getResponseHeader("IS-REFRESHTOKEN-EXPIRED") === "true";
 
             if (isRefreshTokenExpired) {
-                window.location.href = window.location.origin + "/app/Views/Auth.html";
-                return;
+                return (window.location.href = window.location.origin + "/app/Views/Auth.html");
             } else if (isTokenExpired) {
                 getNewAccessToken(userId, displayCarsApiRequest);
             } else {
-                console.error('Error fetching machine data:', error);
+                console.error('Error fetching:', error);
+                alert("Error display cars");
             }
         }
     });
